@@ -5,48 +5,52 @@
   --font-sans: var(--font-space-mono), monospace;
 }
 
-@keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
 
-  to {
-    transform: rotate(360deg);
-  }
-}
+@keyframes float {
 
-.animate-spin-slow {
-  animation: spin 4s linear infinite;
-}
-
-.prose-invert {
-  --tw-prose-headings: #14f195;
-  --tw-prose-links: #00e0ff;
-  --tw-prose-bold: #ffffff;
-  --tw-prose-bullets: #14f195;
-  --tw-prose-body: #cbd5e1;
-}
-
-@keyframes glassShimmer {
-  0% {
-    background-position: -200px 0;
-  }
-
+  0%,
   100% {
-    background-position: 200px 0;
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotateX(2deg) rotateY(-2deg);
   }
 }
 
-.liquid-glass::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg,
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.25),
-      rgba(255, 255, 255, 0.1));
-  background-size: 400% 100%;
-  animation: glassShimmer 8s infinite linear;
-  border-radius: inherit;
-  pointer-events: none;
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: scale(1.05);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.4s ease forwards;
 }
